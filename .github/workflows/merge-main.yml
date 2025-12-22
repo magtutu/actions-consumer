@@ -7,6 +7,8 @@ on:
 jobs:
   deploy-pipeline:
     name: Deploy Pipeline
+    permissions:
+      id-token: write
     uses: magtutu/shared-actions/.github/workflows/app-merge.yml@main
     with:
       app-name: actions-consumer
