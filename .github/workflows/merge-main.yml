@@ -7,6 +7,6 @@ on:
 jobs:
   deploy-pipeline:
     name: Deploy Pipeline
-    uses: magtutu/shared-actions/.github/workflows/merge-main.yml@main
+    uses: magtutu/shared-actions/.github/workflows/shared/on-merge.yml@main
     with:
       app-name: actions-consumer
