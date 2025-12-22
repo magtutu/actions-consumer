@@ -5,8 +5,19 @@ on:
     branches: [main]
 
 jobs:
+  debug-env:
+    name: Debug Environment Variables
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print environment variables
+        run: |
+          echo "🔍 Environment Variables in actions-consumer workflow:"
+          echo "================================"
+          env | sort
+  
   deploy-pipeline:
     name: Deploy Pipeline
+    needs: debug-env
     permissions:
       id-token: write
     uses: magtutu/shared-actions/.github/workflows/app-merge.yml@main
