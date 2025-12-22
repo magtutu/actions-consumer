@@ -4,7 +4,7 @@ This repository demonstrates how to consume reusable workflows from another repo
 
 ## About
 
-This repo calls the `on-merge.yml` workflow from the shared-actions repository. All environments, secrets, and protection rules are managed centrally in the shared-actions repo.
+This repo calls the `app-merge.yml` workflow from the shared-actions repository. All environments, secrets, and protection rules are managed centrally in the shared-actions repo.
 
 ## Setup Instructions
 
@@ -16,7 +16,7 @@ This repo calls the `on-merge.yml` workflow from the shared-actions repository. 
 
 ## How It Works
 
-- This repo calls `on-merge.yml` from shared-actions on every push to main
+- This repo calls `app-merge.yml` from shared-actions on every push to main
 - The workflow runs in the shared-actions repo context
 - Secrets come from shared-actions repo environments
 - Protection rules (approvals, branch restrictions) are enforced from shared-actions
@@ -27,7 +27,7 @@ This repo calls the `on-merge.yml` workflow from the shared-actions repository. 
 ```
 Push to main
     ↓
-on-merge.yml (in shared-actions)
+app-merge.yml (in shared-actions)
     ↓
 Deploy to Staging (automatic)
     ↓
