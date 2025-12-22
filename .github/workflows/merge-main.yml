@@ -1,0 +1,12 @@
+name: Deploy Application
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy-pipeline:
+    name: Deploy Pipeline
+    uses: magtutu/shared-actions/.github/workflows/merge-main.yml@main
+    with:
+      app-name: actions-consumer
