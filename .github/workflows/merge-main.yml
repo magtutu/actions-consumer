@@ -12,9 +12,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: List checkout out repo
-        run: find .
-
       - name: Upload code artifact
         uses: actions/upload-artifact@v4
         with:
