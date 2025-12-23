@@ -5,19 +5,21 @@ on:
     branches: [main]
 
 jobs:
-  debug-env:
-    name: Debug Environment Variables
+  check-vars:
+    name: Check Variables in Consumer
     runs-on: ubuntu-latest
     steps:
-      - name: Print environment variables
-        run: |
-          echo "🔍 Environment Variables in actions-consumer workflow:"
-          echo "================================"
-          env | sort
+      - name: Check secret and variable access
+        uses: magtutu/shared-actions/check-vars@main
+        env:
+          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+          DEPLOY_INFO: ${{ vars.DEPLOY_INFO }}
+        with:
+          context-name: actions-consumer workflow
   
-  deploy-pipeline:
+  merge-main:
     name: Deploy Pipeline
-    needs: debug-env
+    needs: check-vars
     permissions:
       id-token: write
     uses: magtutu/shared-actions/.github/workflows/app-merge.yml@main
