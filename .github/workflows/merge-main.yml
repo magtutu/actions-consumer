@@ -29,3 +29,4 @@ jobs:
     uses: magtutu/shared-actions/.github/workflows/app-merge.yml@main
     with:
       app-name: actions-consumer
+    secrets: inherit
