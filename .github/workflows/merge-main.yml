@@ -9,18 +9,15 @@ jobs:
     name: Checkout and Upload Code
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Upload code artifact
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: app-code
           path: .
           retention-days: 1
 
   merge-main:
-    name: Deploy Pipeline
     needs: checkout-code
     permissions:
       id-token: write
