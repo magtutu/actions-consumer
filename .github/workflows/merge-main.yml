@@ -8,31 +8,31 @@ jobs:
   check-vars:
     name: Check Variables in Consumer
     runs-on: ubuntu-latest
-  steps:
-    - name: Check secret and variable access
-      shell: bash
-      env:
-        DEPLOY_TOKEN: ${{ env.DEPLOY_TOKEN }}
-        DEPLOY_INFO: ${{ env.DEPLOY_INFO }}
-      run: |
-        echo "🔍 Checking access in: actions-consumer workflow"
-        echo "================================"
-        
-        # Check DEPLOY_TOKEN secret
-        if [ -z "$DEPLOY_TOKEN" ]; then
-          echo "❌ DEPLOY_TOKEN secret is NOT accessible"
-        else
-          echo "✅ DEPLOY_TOKEN secret is accessible: ${DEPLOY_TOKEN:0:10}..."
-        fi
+    steps:
+      - name: Check secret and variable access
+        shell: bash
+        env:
+          DEPLOY_TOKEN: ${{ env.DEPLOY_TOKEN }}
+          DEPLOY_INFO: ${{ env.DEPLOY_INFO }}
+        run: |
+          echo "🔍 Checking access in: actions-consumer workflow"
+          echo "================================"
+          
+          # Check DEPLOY_TOKEN secret
+          if [ -z "$DEPLOY_TOKEN" ]; then
+            echo "❌ DEPLOY_TOKEN secret is NOT accessible"
+          else
+            echo "✅ DEPLOY_TOKEN secret is accessible: ${DEPLOY_TOKEN:0:10}..."
+          fi
 
-        # Check DEPLOY_INFO variable
-        if [ -z "$DEPLOY_INFO" ]; then
-          echo "❌ DEPLOY_INFO variable is NOT accessible"
-        else
-          echo "✅ DEPLOY_INFO variable is accessible: $DEPLOY_INFO"
-        fi
-        
-        echo "================================"
+          # Check DEPLOY_INFO variable
+          if [ -z "$DEPLOY_INFO" ]; then
+            echo "❌ DEPLOY_INFO variable is NOT accessible"
+          else
+            echo "✅ DEPLOY_INFO variable is accessible: $DEPLOY_INFO"
+          fi
+          
+          echo "================================"
   
   merge-main:
     name: Deploy Pipeline
