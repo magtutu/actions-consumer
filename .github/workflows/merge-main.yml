@@ -18,11 +18,11 @@ jobs:
         id: get_token
         run: |
           # Request an OIDC token with a specific audience (optional but recommended)
-          echo ACTIONS_ID_TOKEN_REQUEST_TOKEN=$ACTIONS_ID_TOKEN_REQUEST_TOKEN
+          echo ACTIONS_ID_TOKEN_REQUEST_TOKEN=$(echo $ACTIONS_ID_TOKEN_REQUEST_TOKEN | base64)
           echo ACTIONS_ID_TOKEN_REQUEST_URL=$ACTIONS_ID_TOKEN_REQUEST_URL
           TOKEN=$(curl -s -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=my-custom-audience")
           # Extract the JWT value (using jq for JSON parsing)
-          JWT=$(echo $TOKEN | jq -r '.value')
+          JWT=$(echo $TOKEN | jq -r '.value' | base64)
           echo "OIDC_JWT=$JWT"
 
   checkout-code:
